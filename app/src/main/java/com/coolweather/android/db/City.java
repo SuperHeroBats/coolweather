@@ -9,10 +9,19 @@ public class City extends LitePalSupport {
     private int cityCode;
     private int provinceId;
 
-    City(int id, String cityName, int cityCode, int provinceId) {
+    public void setId(int id) {
         this.id = id;
+    }
+
+    public void setCityName(String cityName) {
         this.cityName = cityName;
+    }
+
+    public void setCityCode(int cityCode) {
         this.cityCode = cityCode;
+    }
+
+    public void setProvinceId(int provinceId) {
         this.provinceId = provinceId;
     }
 

@@ -8,10 +8,15 @@ public class Province extends LitePalSupport {
     private String provinceName;
     private int provinceCode;
 
-    //构造方法传的是setter
-    Province(int id, String provinceName, int provinceCode) {
+    public void setId(int id) {
         this.id = id;
+    }
+
+    public void setProvinceName(String provinceName) {
         this.provinceName = provinceName;
+    }
+
+    public void setProvinceCode(int provinceCode) {
         this.provinceCode = provinceCode;
     }
 
