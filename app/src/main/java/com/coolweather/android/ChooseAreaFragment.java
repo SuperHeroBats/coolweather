@@ -1,6 +1,7 @@
 package com.coolweather.android;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -88,6 +89,14 @@ public class ChooseAreaFragment extends Fragment {
                 } else if (currentLevel == LEVEL_CITY) {
                     selectedCity = cityList.get(position);
                     queryCounties();
+                }else if(currentLevel == LEVEL_COUNTY){
+                    //获取当前县级的天气id
+                    String weatherId = countyList.get(position).getWeatherId();
+                    Intent intent = new Intent(getActivity(), WeatherActivity.class);
+                    //传入天气id启动天气界面
+                    intent.putExtra("weather_id", weatherId);
+                    startActivity(intent);
+                    getActivity().finish();
                 }
             }
         });
@@ -197,7 +206,7 @@ public class ChooseAreaFragment extends Fragment {
                 } else if ("city".equals(type)) {
                     result = Utility.handleCityResponse(responseText, selectedProvince.getId());
                 } else if ("county".equals(type)) {
-                    result = Utility.hanleCountyResponse(responseText, selectedCity.getId());
+                    result = Utility.handleCountyResponse(responseText, selectedCity.getId());
                 }
 
                 //处理结果
